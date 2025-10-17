@@ -30,6 +30,10 @@ const Index = () => {
     { code: 'en' as Language, name: 'English', nativeName: 'English' },
     { code: 'hi' as Language, name: 'Hindi', nativeName: 'हिन्दी' },
     { code: 'mr' as Language, name: 'Marathi', nativeName: 'मराठी' },
+    { code: 'ta' as Language, name: 'Tamil', nativeName: 'தமிழ்' },
+    { code: 'te' as Language, name: 'Telugu', nativeName: 'తెలుగు' },
+    { code: 'bn' as Language, name: 'Bengali', nativeName: 'বাংলা' },
+    { code: 'gu' as Language, name: 'Gujarati', nativeName: 'ગુજરાતી' },
   ];
 
   return (

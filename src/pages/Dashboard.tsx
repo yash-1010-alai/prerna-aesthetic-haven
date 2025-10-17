@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/types/language";
 import { LogOut, Briefcase, User } from "lucide-react";
 
 const Dashboard = () => {
@@ -13,31 +14,7 @@ const Dashboard = () => {
     navigate('/');
   };
 
-  const dashboardText = {
-    en: {
-      welcome: "Welcome to Your Dashboard",
-      subtitle: "Start exploring job opportunities tailored for you",
-      profile: "My Profile",
-      jobs: "Find Jobs",
-      logout: "Logout"
-    },
-    hi: {
-      welcome: "आपके डैशबोर्ड में आपका स्वागत है",
-      subtitle: "आपके लिए अनुकूलित नौकरी के अवसरों का अन्वेषण शुरू करें",
-      profile: "मेरी प्रोफ़ाइल",
-      jobs: "नौकरियां खोजें",
-      logout: "लॉगआउट"
-    },
-    mr: {
-      welcome: "आपल्या डॅशबोर्डमध्ये आपले स्वागत आहे",
-      subtitle: "आपल्यासाठी तयार केलेल्या नोकरीच्या संधी शोधणे सुरू करा",
-      profile: "माझी प्रोफाइल",
-      jobs: "नोकऱ्या शोधा",
-      logout: "लॉगआउट"
-    }
-  };
-
-  const t = dashboardText[language];
+  const t = translations;
 
   return (
     <div className="min-h-screen gradient-subtle">
@@ -52,17 +29,17 @@ const Dashboard = () => {
             className="gap-2"
           >
             <LogOut className="w-4 h-4" />
-            {t.logout}
+            {t.logout[language]}
           </Button>
         </div>
 
         <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
           <div className="text-center space-y-4">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
-              {t.welcome}
+              {t.dashboardWelcome[language]}
             </h2>
             <p className="text-lg text-muted-foreground">
-              {t.subtitle}
+              {t.dashboardSubtitle[language]}
             </p>
           </div>
 
@@ -73,12 +50,10 @@ const Dashboard = () => {
                   <User className="w-7 h-7 text-primary-foreground" />
                 </div>
                 <h3 className="font-display text-2xl font-semibold text-foreground">
-                  {t.profile}
+                  {t.myProfile[language]}
                 </h3>
                 <p className="text-muted-foreground">
-                  {language === 'en' && "Manage your personal information and preferences"}
-                  {language === 'hi' && "अपनी व्यक्तिगत जानकारी और प्राथमिकताएं प्रबंधित करें"}
-                  {language === 'mr' && "आपली वैयक्तिक माहिती आणि प्राधान्ये व्यवस्थापित करा"}
+                  {t.profileDescription[language]}
                 </p>
               </div>
             </Card>
@@ -89,12 +64,10 @@ const Dashboard = () => {
                   <Briefcase className="w-7 h-7 text-secondary-foreground" />
                 </div>
                 <h3 className="font-display text-2xl font-semibold text-foreground">
-                  {t.jobs}
+                  {t.findJobs[language]}
                 </h3>
                 <p className="text-muted-foreground">
-                  {language === 'en' && "Discover opportunities matching your skills and constraints"}
-                  {language === 'hi' && "अपने कौशल और बाधाओं से मेल खाने वाले अवसर खोजें"}
-                  {language === 'mr' && "आपल्या कौशल्ये आणि मर्यादांशी जुळणाऱ्या संधी शोधा"}
+                  {t.jobsDescription[language]}
                 </p>
               </div>
             </Card>
