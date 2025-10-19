@@ -165,19 +165,19 @@ const Index = () => {
             <div className="space-y-8 animate-fade-in">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
                 <Sparkles className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium text-primary">Empowering Women, One Opportunity at a Time</span>
+                <span className="text-sm font-medium text-primary">{translations.heroTagline[language]}</span>
               </div>
               
               <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight">
                 <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                  Find Opportunities
+                  {translations.heroTitle1[language]}
                 </span>
                 <br />
-                <span className="text-foreground">That Fit You</span>
+                <span className="text-foreground">{translations.heroTitle2[language]}</span>
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
-                Your digital companion for discovering flexible work, building confidence, and creating your own path to empowerment
+                {translations.heroSubtitle[language]}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -186,7 +186,7 @@ const Index = () => {
                   size="lg"
                   className="gradient-primary text-primary-foreground font-semibold text-lg h-14 px-8 rounded-xl shadow-elegant hover:shadow-glow transition-all hover-lift"
                 >
-                  Join the Movement
+                  {translations.joinMovement[language]}
                 </Button>
                 <Button 
                   variant="outline"
@@ -195,7 +195,7 @@ const Index = () => {
                   className="h-14 px-8 rounded-xl border-2 border-primary/30 hover:bg-primary/5"
                 >
                   <Languages className="w-5 h-5 mr-2" />
-                  Change Language
+                  {translations.changeLanguage[language]}
                 </Button>
               </div>
             </div>
@@ -230,10 +230,10 @@ const Index = () => {
 
           <div className="order-1 lg:order-2">
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground">
-              Why Choose Prerna?
+              {translations.whyChoosePrerna[language]}
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              We understand your journey and speak your language
+              {translations.whyChooseSubtitle[language]}
             </p>
 
             <div className="space-y-6">
@@ -261,10 +261,10 @@ const Index = () => {
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="text-center mb-12">
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            Explore Diverse Opportunities
+            {translations.exploreOpportunities[language]}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Every skill matters, every talent is valued
+            {translations.everySkillMatters[language]}
           </p>
         </div>
 
@@ -306,17 +306,17 @@ const Index = () => {
             <Card className="p-12 text-center lg:text-left gradient-primary shadow-elegant order-1 lg:order-2">
               <Users className="w-16 h-16 text-primary-foreground mx-auto lg:mx-0 mb-6 opacity-90" />
               <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 text-primary-foreground">
-                Ready to Start Your Journey?
+                {translations.readyToStart[language]}
               </h2>
               <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
-                Join thousands of empowered women who found flexible work opportunities that fit their lives and dreams
+                {translations.readyToStartDesc[language]}
               </p>
               <Button 
                 onClick={() => navigate('/auth')}
                 size="lg"
                 className="bg-card text-primary hover:bg-card/90 font-semibold text-lg h-14 px-10 rounded-xl shadow-elegant hover:shadow-glow transition-all hover-lift w-full sm:w-auto"
               >
-                Get Started Now
+                {translations.getStartedNow[language]}
               </Button>
             </Card>
           </div>
@@ -329,34 +329,34 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8">
             {/* About Column */}
             <div>
-              <h3 className="font-display text-lg font-bold mb-4 text-foreground">About</h3>
+              <h3 className="font-display text-lg font-bold mb-4 text-foreground">{translations.about[language]}</h3>
               <p className="text-muted-foreground leading-relaxed mb-3">
-                Prerna is your digital companion for discovering flexible work opportunities that fit your life and dreams.
+                {translations.aboutDesc[language]}
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Our mission: Empowering women through accessible, inclusive job opportunities.
+                {translations.mission[language]}
               </p>
             </div>
 
             {/* Quick Links Column */}
             <div>
-              <h3 className="font-display text-lg font-bold mb-4 text-foreground">Quick Links</h3>
+              <h3 className="font-display text-lg font-bold mb-4 text-foreground">{translations.quickLinks[language]}</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</a>
+                  <a href="/" className="text-muted-foreground hover:text-primary transition-colors">{translations.home[language]}</a>
                 </li>
                 <li>
-                  <a href="/dashboard" className="text-muted-foreground hover:text-primary transition-colors">Find Jobs</a>
+                  <a href="/dashboard" className="text-muted-foreground hover:text-primary transition-colors">{translations.findJobs[language]}</a>
                 </li>
                 <li>
-                  <a href="/dashboard" className="text-muted-foreground hover:text-primary transition-colors">Post Job</a>
+                  <a href="/dashboard" className="text-muted-foreground hover:text-primary transition-colors">{translations.postJob[language]}</a>
                 </li>
                 <li>
                   <button 
                     onClick={() => setShowLanguageSelection(true)}
                     className="text-muted-foreground hover:text-primary transition-colors text-left"
                   >
-                    Change Language
+                    {translations.changeLanguage[language]}
                   </button>
                 </li>
               </ul>
@@ -364,7 +364,7 @@ const Index = () => {
 
             {/* Contact Column */}
             <div>
-              <h3 className="font-display text-lg font-bold mb-4 text-foreground">Contact</h3>
+              <h3 className="font-display text-lg font-bold mb-4 text-foreground">{translations.contact[language]}</h3>
               <ul className="space-y-2">
                 <li className="text-muted-foreground">
                   <a href="mailto:hello@prerna.com" className="hover:text-primary transition-colors">
@@ -395,13 +395,13 @@ const Index = () => {
 
             {/* Legal Column */}
             <div>
-              <h3 className="font-display text-lg font-bold mb-4 text-foreground">Legal</h3>
+              <h3 className="font-display text-lg font-bold mb-4 text-foreground">{translations.legal[language]}</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a>
+                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">{translations.privacyPolicy[language]}</a>
                 </li>
                 <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">Terms of Service</a>
+                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">{translations.termsOfService[language]}</a>
                 </li>
               </ul>
             </div>
@@ -410,10 +410,10 @@ const Index = () => {
           {/* Motivational Quote */}
           <div className="border-t border-primary/10 pt-8 text-center">
             <p className="text-muted-foreground italic text-lg mb-2">
-              "Empowered women empower communities."
+              "{translations.footerQuote[language]}"
             </p>
             <p className="text-sm text-muted-foreground/70">
-              © 2024 Prerna. All rights reserved.
+              {translations.copyright[language]}
             </p>
           </div>
         </div>
