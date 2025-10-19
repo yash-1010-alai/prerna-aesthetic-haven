@@ -5,6 +5,12 @@ import { Card } from "@/components/ui/card";
 import { Languages, Mic, Briefcase, Heart, Sparkles, TrendingUp, Users, Globe, CheckCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations, Language } from "@/types/language";
+import heroCollaboration from "@/assets/hero-collaboration.jpg";
+import successStory1 from "@/assets/success-story-1.jpg";
+import successStory2 from "@/assets/success-story-2.jpg";
+import successStory3 from "@/assets/success-story-3.jpg";
+import unityIllustration from "@/assets/unity-illustration.jpg";
+import featuresIllustration from "@/assets/features-illustration.jpg";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -71,19 +77,22 @@ const Index = () => {
       name: "Priya Sharma",
       role: "Home Baker",
       quote: "Prerna helped me turn my hobby into a thriving business. Now I support my family doing what I love!",
-      location: "Mumbai"
+      location: "Mumbai",
+      image: successStory1
     },
     {
       name: "Anjali Desai",
       role: "Web Developer",
       quote: "Found flexible remote work that fits my schedule. Being a mom and a professional is now possible!",
-      location: "Bangalore"
+      location: "Bangalore",
+      image: successStory2
     },
     {
       name: "Meera Patel",
       role: "Boutique Owner",
       quote: "From small tailoring jobs to my own boutique - Prerna connected me with opportunities I never imagined.",
-      location: "Ahmedabad"
+      location: "Ahmedabad",
+      image: successStory3
     }
   ];
 
@@ -152,41 +161,55 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="container mx-auto px-4 py-16 md:py-24">
-          <div className="max-w-5xl mx-auto text-center space-y-8 animate-fade-in">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Empowering Women, One Opportunity at a Time</span>
-            </div>
-            
-            <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight">
-              <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                Find Opportunities
-              </span>
-              <br />
-              <span className="text-foreground">That Fit You</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Your digital companion for discovering flexible work, building confidence, and creating your own path to empowerment
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+            <div className="space-y-8 animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
+                <Sparkles className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-primary">Empowering Women, One Opportunity at a Time</span>
+              </div>
+              
+              <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight">
+                <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                  Find Opportunities
+                </span>
+                <br />
+                <span className="text-foreground">That Fit You</span>
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                Your digital companion for discovering flexible work, building confidence, and creating your own path to empowerment
+              </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <Button 
-                onClick={() => navigate('/auth')}
-                size="lg"
-                className="gradient-primary text-primary-foreground font-semibold text-lg h-14 px-8 rounded-xl shadow-elegant hover:shadow-glow transition-all hover-lift"
-              >
-                Join the Movement
-              </Button>
-              <Button 
-                variant="outline"
-                size="lg"
-                onClick={() => setShowLanguageSelection(true)}
-                className="h-14 px-8 rounded-xl border-2 border-primary/30 hover:bg-primary/5"
-              >
-                <Languages className="w-5 h-5 mr-2" />
-                Change Language
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button 
+                  onClick={() => navigate('/auth')}
+                  size="lg"
+                  className="gradient-primary text-primary-foreground font-semibold text-lg h-14 px-8 rounded-xl shadow-elegant hover:shadow-glow transition-all hover-lift"
+                >
+                  Join the Movement
+                </Button>
+                <Button 
+                  variant="outline"
+                  size="lg"
+                  onClick={() => setShowLanguageSelection(true)}
+                  className="h-14 px-8 rounded-xl border-2 border-primary/30 hover:bg-primary/5"
+                >
+                  <Languages className="w-5 h-5 mr-2" />
+                  Change Language
+                </Button>
+              </div>
+            </div>
+
+            <div className="relative animate-fade-in" style={{ animationDelay: '200ms' }}>
+              <div className="relative rounded-3xl overflow-hidden shadow-elegant">
+                <img 
+                  src={heroCollaboration} 
+                  alt="Diverse Indian women collaborating and working together in a modern workspace"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-48 h-48 rounded-full bg-primary/10 blur-3xl"></div>
+              <div className="absolute -top-6 -left-6 w-48 h-48 rounded-full bg-secondary/10 blur-3xl"></div>
             </div>
           </div>
         </div>
@@ -194,29 +217,43 @@ const Index = () => {
 
       {/* Features Section */}
       <section className="container mx-auto px-4 py-16 md:py-24">
-        <div className="text-center mb-12">
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            Why Choose Prerna?
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            We understand your journey and speak your language
-          </p>
-        </div>
+        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto mb-16">
+          <div className="relative order-2 lg:order-1">
+            <div className="relative rounded-3xl overflow-hidden shadow-elegant">
+              <img 
+                src={featuresIllustration} 
+                alt="Woman working remotely from home with laptop in a comfortable workspace"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {features.map((feature, index) => (
-            <Card 
-              key={index}
-              className="p-6 hover-lift shadow-soft hover:shadow-elegant transition-all duration-300 bg-card/80 backdrop-blur-sm border-2 border-border hover:border-primary/30"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center mb-4 shadow-soft">
-                <feature.icon className="w-7 h-7 text-primary-foreground" />
-              </div>
-              <h3 className="font-display text-xl font-semibold mb-2 text-foreground">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-            </Card>
-          ))}
+          <div className="order-1 lg:order-2">
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-foreground">
+              Why Choose Prerna?
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              We understand your journey and speak your language
+            </p>
+
+            <div className="space-y-6">
+              {features.map((feature, index) => (
+                <div 
+                  key={index}
+                  className="flex gap-4 p-4 rounded-2xl hover:bg-muted/30 transition-all duration-300"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center flex-shrink-0 shadow-soft">
+                    <feature.icon className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-lg font-semibold mb-1 text-foreground">{feature.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -270,20 +307,22 @@ const Index = () => {
           {successStories.map((story, index) => (
             <Card 
               key={index}
-              className="p-8 hover-lift shadow-soft hover:shadow-elegant transition-all duration-300 bg-card/80 backdrop-blur-sm border-2 border-border"
+              className="p-8 hover-lift shadow-soft hover:shadow-elegant transition-all duration-300 bg-card/80 backdrop-blur-sm border-2 border-border overflow-hidden"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center text-2xl shadow-soft">
-                  👩
+              <div className="flex flex-col items-center text-center mb-6">
+                <div className="w-24 h-24 rounded-full overflow-hidden mb-4 shadow-elegant border-4 border-primary/10">
+                  <img 
+                    src={story.image} 
+                    alt={`${story.name} - ${story.role}`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div>
-                  <h3 className="font-display font-semibold text-lg text-foreground">{story.name}</h3>
-                  <p className="text-sm text-muted-foreground">{story.role}</p>
-                </div>
+                <h3 className="font-display font-semibold text-lg text-foreground">{story.name}</h3>
+                <p className="text-sm text-primary font-medium">{story.role}</p>
               </div>
-              <p className="text-muted-foreground italic mb-4 leading-relaxed">"{story.quote}"</p>
-              <p className="text-sm text-primary font-medium">📍 {story.location}</p>
+              <p className="text-muted-foreground italic mb-4 leading-relaxed text-center">"{story.quote}"</p>
+              <p className="text-sm text-primary font-medium text-center">📍 {story.location}</p>
             </Card>
           ))}
         </div>
@@ -291,22 +330,36 @@ const Index = () => {
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-16 md:py-24">
-        <Card className="max-w-4xl mx-auto p-12 md:p-16 text-center gradient-primary shadow-elegant">
-          <Users className="w-16 h-16 text-primary-foreground mx-auto mb-6 opacity-90" />
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 text-primary-foreground">
-            Ready to Start Your Journey?
-          </h2>
-          <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Join thousands of empowered women who found flexible work opportunities that fit their lives and dreams
-          </p>
-          <Button 
-            onClick={() => navigate('/auth')}
-            size="lg"
-            className="bg-card text-primary hover:bg-card/90 font-semibold text-lg h-14 px-10 rounded-xl shadow-elegant hover:shadow-glow transition-all hover-lift"
-          >
-            Get Started Now
-          </Button>
-        </Card>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative order-2 lg:order-1">
+              <div className="relative rounded-3xl overflow-hidden shadow-elegant">
+                <img 
+                  src={unityIllustration} 
+                  alt="Diverse hands joining together in unity representing women's empowerment"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
+
+            <Card className="p-12 text-center lg:text-left gradient-primary shadow-elegant order-1 lg:order-2">
+              <Users className="w-16 h-16 text-primary-foreground mx-auto lg:mx-0 mb-6 opacity-90" />
+              <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 text-primary-foreground">
+                Ready to Start Your Journey?
+              </h2>
+              <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
+                Join thousands of empowered women who found flexible work opportunities that fit their lives and dreams
+              </p>
+              <Button 
+                onClick={() => navigate('/auth')}
+                size="lg"
+                className="bg-card text-primary hover:bg-card/90 font-semibold text-lg h-14 px-10 rounded-xl shadow-elegant hover:shadow-glow transition-all hover-lift w-full sm:w-auto"
+              >
+                Get Started Now
+              </Button>
+            </Card>
+          </div>
+        </div>
       </section>
 
       {/* Footer */}
