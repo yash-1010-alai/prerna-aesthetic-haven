@@ -7,8 +7,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { translations } from "@/types/language";
+import { translations, Language } from "@/types/language";
 import { 
   User, 
   Phone, 
@@ -20,14 +26,28 @@ import {
   Save,
   Upload,
   Sparkles,
-  Settings
+  Settings,
+  Languages,
+  Home,
+  ArrowLeft
 } from "lucide-react";
 import { toast } from "sonner";
+import languageIcon from "@/assets/language-icon.png";
 
 const JobSeekerProfile = () => {
   const navigate = useNavigate();
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const t = translations;
+
+  const languages = [
+    { code: 'en' as Language, name: 'English', nativeName: 'English' },
+    { code: 'hi' as Language, name: 'Hindi', nativeName: 'हिन्दी' },
+    { code: 'mr' as Language, name: 'Marathi', nativeName: 'मराठी' },
+    { code: 'ta' as Language, name: 'Tamil', nativeName: 'தமிழ்' },
+    { code: 'te' as Language, name: 'Telugu', nativeName: 'తెలుగు' },
+    { code: 'bn' as Language, name: 'Bengali', nativeName: 'বাংলা' },
+    { code: 'gu' as Language, name: 'Gujarati', nativeName: 'ગુજરાતી' },
+  ];
 
   const [formData, setFormData] = useState({
     name: "",
@@ -116,8 +136,76 @@ const JobSeekerProfile = () => {
   };
 
   return (
-    <div className="min-h-screen gradient-hero py-8 px-4">
-      <div className="max-w-2xl mx-auto">
+    <div className="min-h-screen gradient-hero">
+      {/* Header with Navigation and Language Selector */}
+      <header className="border-b border-border/50 bg-card/95 backdrop-blur-sm sticky top-0 z-50 shadow-soft">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center gap-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate('/dashboard')}
+                className="gap-2 hover:bg-primary/10"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span className="hidden sm:inline">{t.dashboardWelcome?.[language] || "Dashboard"}</span>
+              </Button>
+              
+              <div className="flex items-center gap-2">
+                <img 
+                  src={languageIcon} 
+                  alt="Prerna" 
+                  className="w-8 h-8 rounded-full shadow-soft" 
+                />
+                <h1 className="text-xl font-display font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hidden md:block">
+                  Prerna
+                </h1>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-3">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate('/')}
+                className="gap-2 hover:bg-primary/10"
+              >
+                <Home className="w-4 h-4" />
+                <span className="hidden sm:inline">{t.home?.[language] || "Home"}</span>
+              </Button>
+              
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="gap-2 bg-card/50 hover:bg-card border-primary/20">
+                    <Languages className="w-4 h-4 text-primary" />
+                    <span className="hidden sm:inline font-medium">
+                      {languages.find(l => l.code === language)?.nativeName}
+                    </span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48 bg-card border-border z-[60]">
+                  {languages.map((lang) => (
+                    <DropdownMenuItem
+                      key={lang.code}
+                      onClick={() => setLanguage(lang.code)}
+                      className={`cursor-pointer ${language === lang.code ? 'bg-primary/10 font-semibold text-primary' : 'hover:bg-muted'}`}
+                    >
+                      <span>{lang.nativeName}</span>
+                      {language === lang.code && (
+                        <span className="ml-auto text-primary font-bold">✓</span>
+                      )}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className="py-8 px-4">
+        <div className="max-w-2xl mx-auto">
         <Card className="shadow-elegant rounded-2xl border-0 overflow-hidden animate-slide-up">
           <CardHeader className="bg-gradient-to-r from-accent/30 to-primary/20 border-b border-border/50">
             <CardTitle className="text-3xl font-display text-center text-foreground flex items-center justify-center gap-2">
@@ -140,7 +228,7 @@ const JobSeekerProfile = () => {
                 className="cursor-pointer flex items-center gap-2 px-4 py-2 rounded-full bg-accent hover:bg-accent/80 text-accent-foreground transition-smooth shadow-soft"
               >
                 <Upload className="w-4 h-4" />
-                {t.uploadPhoto?.[language] || "Upload Your Photo"}
+                {t.uploadYourPhoto?.[language] || "Upload Your Photo"}
               </Label>
               <Input
                 id="photo-upload"
@@ -228,7 +316,7 @@ const JobSeekerProfile = () => {
             <div className="space-y-2">
               <Label className="flex items-center gap-2 text-base font-medium text-foreground">
                 <Sparkles className="w-4 h-4 text-primary" />
-                {t.interestsWorkPreferences?.[language] || "My Interests & Work Preferences"}
+                {t.myInterestsAndWork?.[language] || "My Interests & Work Preferences"}
               </Label>
               <div className="relative">
                 <Textarea
@@ -303,10 +391,11 @@ const JobSeekerProfile = () => {
               className="w-full h-12 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground shadow-soft hover-lift transition-smooth text-lg font-medium"
             >
               <Save className="w-5 h-5 mr-2" />
-              {t.saveProfile?.[language] || "Save My Profile"}
+              {t.saveMyProfile?.[language] || "Save My Profile"}
             </Button>
           </CardContent>
-        </Card>
+          </Card>
+        </div>
       </div>
     </div>
   );
