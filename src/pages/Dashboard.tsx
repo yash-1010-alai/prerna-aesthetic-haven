@@ -37,8 +37,10 @@ const Dashboard = () => {
   const currentLanguage = languages.find(lang => lang.code === language) || languages[0];
 
   const handleContinue = () => {
-    if (selectedRole) {
-      // Navigate based on selected role
+    if (selectedRole === 'jobSeeker') {
+      navigate('/job-seeker-profile');
+    } else if (selectedRole) {
+      // Navigate to other role pages (to be implemented)
       console.log('Selected role:', selectedRole);
     }
   };
